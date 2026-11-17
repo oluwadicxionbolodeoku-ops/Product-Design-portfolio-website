@@ -53,13 +53,13 @@ export const NAV_LINKS = [
   { label: 'What I Do', href: '#services' },
   { label: 'Work', href: '#work' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Insights', href: '#insights' },
+  { label: 'FAQ', href: '#faq' },
   { label: 'Contact', href: '#contact' },
 ];
 
 export const CREDIBILITY_METRICS = [
   {
-    value: '5+ Years',
+    value: '4+ Years',
     label: 'Product/UI/UX Experience',
     highlight: 'Experience'
   },
@@ -192,7 +192,7 @@ export const PROJECTS_DATA: Project[] = [
     client: 'Bayelsa State Government',
     role: 'Principal UX Consultant',
     impact: 'Over 65,000 citizens accessed verified property records online',
-    image: '/src/assets/images/bayelsa_housing_mockup_1790979973820.jpg',
+    image: '/assets/aistudio/Thumbnail_for_Bayelsa_State_Housing___Property_Development_Agency_7b8b6432.png',
     tags: ['Government', 'Web', 'Civic Tech', 'Accessibility']
   },
   {

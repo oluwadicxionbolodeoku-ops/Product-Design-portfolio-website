@@ -14,10 +14,10 @@ import { SelectedWork } from './components/SelectedWork';
 import { Testimonials } from './components/Testimonials';
 import { MarqueeRibbon } from './components/MarqueeRibbon';
 import { Insights } from './components/Insights';
+import { FAQSection } from './components/FAQSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { WorkTogetherModal } from './components/WorkTogetherModal';
-import { ProfilePhotoProvider } from './context/ProfilePhotoContext';
 
 export default function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,8 +35,7 @@ export default function App() {
   };
 
   return (
-    <ProfilePhotoProvider>
-      <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-[#013FD0] selection:text-white">
+    <div className="min-h-screen bg-white text-slate-900 flex flex-col font-sans selection:bg-[#013FD0] selection:text-white">
         {/* 
           Sticky Navigation Bar
           - Name: DICXION BOLODEOKU
@@ -76,7 +75,10 @@ export default function App() {
           {/* 9. Insights & Articles */}
           <Insights />
 
-          {/* 10. Contact Section */}
+          {/* 10. Frequently Asked Questions */}
+          <FAQSection />
+
+          {/* 11. Contact Section */}
           <ContactSection />
         </main>
 
@@ -89,6 +91,5 @@ export default function App() {
           onClose={handleCloseContactModal}
         />
       </div>
-    </ProfilePhotoProvider>
   );
 }

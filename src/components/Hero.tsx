@@ -1,15 +1,13 @@
-import React, { useRef } from 'react';
-import { ArrowUpRight, Star, Quote, Camera, Check } from 'lucide-react';
-import { useProfilePhoto } from '../context/ProfilePhotoContext';
+import React from 'react';
+import { ArrowUpRight, Star, Quote } from 'lucide-react';
 
 interface HeroProps {
   onOpenContactModal: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenContactModal }) => {
-  const { photoUrl, updatePhoto } = useProfilePhoto();
-  const fileInputRef = useRef<HTMLInputElement>(null);
+const PROFILE_PHOTO_SRC = '/Dicxion Profile picture.jpg?v=2';
 
+export const Hero: React.FC<HeroProps> = ({ onOpenContactModal }) => {
   const handleScrollToWork = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const workElement = document.getElementById('work');
@@ -21,21 +19,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContactModal }) => {
         top: offsetPosition,
         behavior: 'smooth'
       });
-    }
-  };
-
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      updatePhoto(file);
-    }
-  };
-
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    const file = e.dataTransfer.files?.[0];
-    if (file) {
-      updatePhoto(file);
     }
   };
 
@@ -103,7 +86,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContactModal }) => {
               ))}
             </div>
             <div className="text-2xl font-extrabold text-[#0A1128] tabular-nums">
-              5+ Years
+              4+ Years
             </div>
             <span className="text-xs text-slate-500 font-medium">
               Product & UI/UX Experience
@@ -111,32 +94,16 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContactModal }) => {
           </div>
 
           {/* Center Portrait Container with Arch/Circle Backdrop */}
-          <div className="relative w-72 sm:w-88 md:w-96 flex flex-col items-center group">
-            {/* Hidden file input for uploading the original HD Dicxion Profile picture.jpg */}
-            <input
-              type="file"
-              ref={fileInputRef}
-              onChange={handleFileChange}
-              accept="image/*"
-              className="hidden"
-              aria-label="Upload original HD photo"
-            />
-
+          <div className="relative w-72 sm:w-88 md:w-96 flex flex-col items-center">
             {/* Rounded Arch Backdrop */}
             <div className="absolute inset-0 rounded-t-full bg-gradient-to-b from-amber-200/70 via-amber-100/40 to-white -z-10 translate-y-6 transform scale-105" />
 
             {/* Circular Profile Picture Frame */}
-            <div
-              onDragOver={(e) => e.preventDefault()}
-              onDrop={handleDrop}
-              onClick={() => fileInputRef.current?.click()}
-              className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-amber-400 cursor-pointer transition-transform hover:scale-[1.01]"
-              title="Click to select your original HD 'Dicxion Profile picture.jpg' without any AI compression"
-            >
+            <div className="relative w-64 h-64 sm:w-80 sm:h-80 rounded-full overflow-hidden border-4 border-white shadow-2xl bg-amber-400">
               <img
-                src={photoUrl}
+                src={PROFILE_PHOTO_SRC}
                 alt="Dicxion Bolodeoku - Product Designer"
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-center scale-[1.1]"
                 style={{ imageRendering: 'auto' }}
                 loading="eager"
                 referrerPolicy="no-referrer"
@@ -145,30 +112,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContactModal }) => {
                   target.src = '/src/assets/images/dicxion_profile_picture.jpg';
                 }}
               />
-
-              {/* Hover Overlay for direct HD photo select */}
-              <div className="absolute inset-0 bg-slate-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white p-4 text-center backdrop-blur-xs">
-                <Camera className="w-6 h-6 mb-1 text-white" />
-                <span className="text-xs font-bold">Select Original HD Photo</span>
-                <span className="text-[10px] text-amber-200 mt-0.5">Click or drop "Dicxion Profile picture.jpg"</span>
-              </div>
-            </div>
-
-            {/* Small HD verification badge */}
-            <div className="mt-2 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-slate-200/80 shadow-xs text-[11px] font-semibold text-slate-700">
-              <span className="w-2 h-2 rounded-full bg-emerald-500" />
-              <span>Original HD Portrait</span>
-              <button
-                type="button"
-                onClick={() => fileInputRef.current?.click()}
-                className="text-[#013FD0] hover:underline text-[10px] font-bold ml-1 cursor-pointer"
-              >
-                (Upload original)
-              </button>
             </div>
 
             {/* Overlapping Hero Action Capsule referencing the reference pill buttons */}
-            <div className="relative mt-2 z-20 flex items-center gap-2 p-1.5 bg-white/95 backdrop-blur-md rounded-full shadow-lg border border-slate-200">
+            <div className="relative -mt-5 z-20 flex items-center gap-2 p-1.5 bg-white/95 backdrop-blur-md rounded-full shadow-lg border border-slate-200">
               <a
                 href="#work"
                 onClick={handleScrollToWork}
@@ -192,7 +139,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenContactModal }) => {
         {/* Mobile metrics strip for small screens */}
         <div className="mt-8 flex lg:hidden items-center justify-center gap-6 text-center pt-4 border-t border-slate-100">
           <div>
-            <div className="text-xl font-bold text-slate-900 tabular-nums">5+ Years</div>
+            <div className="text-xl font-bold text-slate-900 tabular-nums">4+ Years</div>
             <div className="text-[11px] text-slate-500">Experience</div>
           </div>
           <div className="w-px h-8 bg-slate-200" />

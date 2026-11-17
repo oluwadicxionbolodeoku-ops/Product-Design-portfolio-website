@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, Star, Award, ShieldCheck, Mail, CheckCircle2 } from 'lucide-react';
+import { Send, Mail, CheckCircle2 } from 'lucide-react';
 
 export const ContactSection: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -21,12 +21,12 @@ export const ContactSection: React.FC = () => {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* Heading matching the image */}
         <div className="mb-8">
-          <span className="text-xs font-bold text-blue-600 uppercase tracking-widest">
+          <span className="text-xs font-bold text-[#013FD0] uppercase tracking-widest">
             Let's Build Something Memorable
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-slate-900 mt-2 leading-tight">
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#0A1128] mt-2 leading-tight">
             Have an Awesome Project <br className="hidden sm:inline" />
-            Idea? <span className="text-blue-600">Let's Discuss</span>
+            Idea? <span className="text-[#013FD0]">Let's Discuss</span>
           </h2>
           <p className="mt-3 text-slate-500 text-sm sm:text-base max-w-xl mx-auto">
             Drop your email to receive my current project availability deck, rate card, and case study walk-throughs.
@@ -34,14 +34,14 @@ export const ContactSection: React.FC = () => {
         </div>
 
         {/* Email Inquiry Capsule matching the image input bar */}
-        <div className="max-w-xl mx-auto mb-10">
+        <div className="max-w-xl mx-auto">
           {submitted ? (
             <div className="p-4 bg-blue-50 border border-blue-200 rounded-2xl flex items-center justify-center gap-3 text-blue-900 text-sm font-semibold animate-in fade-in">
-              <CheckCircle2 className="w-5 h-5 text-blue-600 shrink-0" />
+              <CheckCircle2 className="w-5 h-5 text-[#013FD0] shrink-0" />
               <span>Thank you! We've dispatched the discovery guide to {email}.</span>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="relative flex items-center shadow-lg rounded-full bg-white border border-slate-200/90 p-1.5 focus-within:ring-2 focus-within:ring-blue-600 focus-within:border-transparent transition-all">
+            <form onSubmit={handleSubmit} className="relative flex items-center shadow-lg rounded-full bg-white border border-slate-200/90 p-1.5 focus-within:ring-2 focus-within:ring-[#013FD0] focus-within:border-transparent transition-all">
               <div className="pl-4 text-slate-400">
                 <Mail className="w-5 h-5" />
               </div>
@@ -56,7 +56,7 @@ export const ContactSection: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSending}
-                className="inline-flex items-center justify-center gap-1.5 px-6 py-2.5 sm:py-3 rounded-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold text-xs sm:text-sm transition-all shadow-xs cursor-pointer shrink-0 disabled:opacity-75"
+                className="inline-flex items-center justify-center gap-1.5 px-6 py-2.5 sm:py-3 rounded-full bg-[#013FD0] hover:bg-[#0034B3] active:bg-[#002B94] text-white font-bold text-xs sm:text-sm transition-all shadow-xs cursor-pointer shrink-0 disabled:opacity-75"
               >
                 {isSending ? (
                   <span>Sending...</span>
@@ -69,24 +69,6 @@ export const ContactSection: React.FC = () => {
               </button>
             </form>
           )}
-        </div>
-
-        {/* Trust Badges matching image: 4.9/5 Average Ratings, 25+ Winning Awards, Certified Product Designer */}
-        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs font-semibold text-slate-700">
-          <div className="flex items-center gap-2">
-            <Star className="w-4 h-4 text-amber-500 fill-amber-500" />
-            <span>4.9/5 Average Ratings</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-blue-600" />
-            <span>25+ Winning Awards</span>
-          </div>
-
-          <div className="flex items-center gap-2">
-            <ShieldCheck className="w-4 h-4 text-emerald-600" />
-            <span>Certified Product Designer</span>
-          </div>
         </div>
       </div>
     </section>

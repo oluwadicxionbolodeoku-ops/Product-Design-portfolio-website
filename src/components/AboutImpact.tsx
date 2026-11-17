@@ -1,13 +1,11 @@
 import React from 'react';
-import { Layers, Users, Network, ArrowUpRight, Compass, HeartHandshake, Sparkles } from 'lucide-react';
-import { useProfilePhoto } from '../context/ProfilePhotoContext';
+import { Layers, Users, Network, ArrowUpRight, HeartHandshake } from 'lucide-react';
 
 interface AboutImpactProps {
   onOpenContactModal: () => void;
 }
 
 export const AboutImpact: React.FC<AboutImpactProps> = ({ onOpenContactModal }) => {
-  const { photoUrl } = useProfilePhoto();
 
   const impactAreas = [
     {
@@ -84,16 +82,16 @@ export const AboutImpact: React.FC<AboutImpactProps> = ({ onOpenContactModal }) 
               />
 
               {/* Professional Portrait */}
-              <div className="relative rounded-3xl overflow-hidden shadow-xl bg-amber-400 border-4 border-white aspect-4/5 sm:aspect-square lg:aspect-4/5">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl bg-white border-4 border-white aspect-square">
                 <img
-                  src={photoUrl}
+                  src="/Dicxion Profile picture.jpg?v=2"
                   alt="Dicxion Bolodeoku - Product Designer, Mentor & Ecosystem Builder"
                   className="w-full h-full object-cover object-center"
                   loading="lazy"
                   referrerPolicy="no-referrer"
                   onError={(e) => {
                     const target = e.currentTarget;
-                    target.src = '/Dicxion Profile picture.jpg';
+                    target.src = '/src/assets/images/dicxion_profile_picture.jpg';
                   }}
                 />
 

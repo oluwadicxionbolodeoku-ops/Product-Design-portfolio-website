@@ -223,6 +223,28 @@ export const WorkTogetherModal: React.FC<WorkTogetherModalProps> = ({ isOpen, on
                   )}
                 </button>
               </div>
+
+              {/* Alternative direct channels */}
+              <div className="pt-3 border-t border-slate-100 flex items-center justify-center gap-4 text-xs text-slate-500">
+                <span>Or reach out directly:</span>
+                <a
+                  href="https://www.linkedin.com/in/dicxion-bolodeoku"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[#013FD0] hover:underline"
+                >
+                  LinkedIn
+                </a>
+                <span>·</span>
+                <a
+                  href="https://www.behance.net/dicxionbolodeoku"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-semibold text-[#013FD0] hover:underline"
+                >
+                  Behance
+                </a>
+              </div>
             </form>
           </div>
         )}
