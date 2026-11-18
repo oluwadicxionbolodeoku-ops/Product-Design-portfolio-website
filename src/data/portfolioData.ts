@@ -9,6 +9,7 @@ export interface Project {
   impact: string;
   image: string;
   tags: string[];
+  caseStudyUrl?: string;
 }
 
 export interface ServiceItem {
@@ -144,8 +145,9 @@ export const PROJECTS_DATA: Project[] = [
     client: 'CareConnect Telehealth',
     role: 'Lead Product Designer',
     impact: 'Reduced patient wait times by 46% across 12 medical specialties',
-    image: '/src/assets/images/careconnect_mockup_1790979927302.jpg',
-    tags: ['Healthcare', 'Telemedicine', 'Mobile App', 'Design System']
+    image: '/assets/aistudio/Thumbnail__CareConnect_04e1000b.png',
+    tags: ['Healthcare', 'Telemedicine', 'Mobile App', 'Design System'],
+    caseStudyUrl: 'https://www.behance.net/gallery/258669031/CareConnect?platform=direct'
   },
   {
     id: 'pioneer-airlines',

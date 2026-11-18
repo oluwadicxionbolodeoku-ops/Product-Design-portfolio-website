@@ -95,7 +95,9 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onOpenContactModal }
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover object-top opacity-95 group-hover:opacity-100 group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                    className={`w-full h-full object-cover ${
+                      project.id === 'careconnect' ? 'object-center' : 'object-top'
+                    } opacity-95 group-hover:opacity-100 group-hover:scale-[1.03] transition-transform duration-700 ease-out`}
                     loading="lazy"
                     referrerPolicy="no-referrer"
                   />
@@ -108,9 +110,23 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onOpenContactModal }
                   </div>
 
                   {/* Circular Hover Arrow Button */}
-                  <div className="absolute bottom-4 right-4 z-10 w-11 h-11 rounded-full bg-white/95 text-[#0A1128] group-hover:bg-[#013FD0] group-hover:text-white flex items-center justify-center shadow-lg transition-all transform group-hover:scale-110">
-                    <ArrowUpRight className="w-5 h-5 text-current group-hover:text-orange-300 transition-colors" />
-                  </div>
+                  {project.caseStudyUrl ? (
+                    <a
+                      href={project.caseStudyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      aria-label={`View ${project.title} case study on Behance`}
+                      title="View Case Study on Behance"
+                      className="absolute bottom-4 right-4 z-10 w-11 h-11 rounded-full bg-white/95 text-[#0A1128] group-hover:bg-[#013FD0] group-hover:text-white flex items-center justify-center shadow-lg transition-all transform group-hover:scale-110"
+                    >
+                      <ArrowUpRight className="w-5 h-5 text-current group-hover:text-orange-300 transition-colors" />
+                    </a>
+                  ) : (
+                    <div className="absolute bottom-4 right-4 z-10 w-11 h-11 rounded-full bg-white/95 text-[#0A1128] group-hover:bg-[#013FD0] group-hover:text-white flex items-center justify-center shadow-lg transition-all transform group-hover:scale-110">
+                      <ArrowUpRight className="w-5 h-5 text-current group-hover:text-orange-300 transition-colors" />
+                    </div>
+                  )}
                 </div>
 
                 {/* Case Study Metadata & Storytelling */}
@@ -139,11 +155,24 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onOpenContactModal }
                     </div>
 
                     {/* View Case Study CTA link */}
-                    <div className="flex items-center justify-between pt-1">
-                      <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#013FD0] group-hover:text-[#0034B3]">
-                        <span>View Case Study</span>
-                        <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                      </span>
+                    <div className="flex items-center justify-between pt-1 gap-3">
+                      {project.caseStudyUrl ? (
+                        <a
+                          href={project.caseStudyUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-[#013FD0] hover:text-[#0034B3] hover:underline"
+                        >
+                          <span>View Case Study on Behance</span>
+                          <ExternalLink className="w-3.5 h-3.5" />
+                        </a>
+                      ) : (
+                        <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#013FD0] group-hover:text-[#0034B3]">
+                          <span>View Case Study</span>
+                          <ChevronRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        </span>
+                      )}
 
                       <span className="text-[11px] font-medium text-slate-400">
                         {project.client}
@@ -194,7 +223,9 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onOpenContactModal }
                 <img
                   src={selectedProject.image}
                   alt={selectedProject.title}
-                  className="w-full h-full object-cover object-top"
+                  className={`w-full h-full object-cover ${
+                    selectedProject.id === 'careconnect' ? 'object-center' : 'object-top'
+                  }`}
                 />
               </div>
 
@@ -240,17 +271,31 @@ export const SelectedWork: React.FC<SelectedWorkProps> = ({ onOpenContactModal }
                   ))}
                 </div>
 
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSelectedProject(null);
-                    onOpenContactModal();
-                  }}
-                  className="px-6 py-3 bg-[#013FD0] hover:bg-[#0034B3] text-white rounded-xl text-xs font-bold shadow-xs transition-colors cursor-pointer flex items-center justify-center gap-2 shrink-0"
-                >
-                  <span>Inquire for Similar Project</span>
-                  <ArrowUpRight className="w-4 h-4 text-orange-300" />
-                </button>
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 shrink-0">
+                  {selectedProject.caseStudyUrl && (
+                    <a
+                      href={selectedProject.caseStudyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-bold shadow-xs transition-colors flex items-center justify-center gap-2 shrink-0"
+                    >
+                      <span>View Case Study on Behance</span>
+                      <ExternalLink className="w-3.5 h-3.5 text-orange-300" />
+                    </a>
+                  )}
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedProject(null);
+                      onOpenContactModal();
+                    }}
+                    className="px-6 py-3 bg-[#013FD0] hover:bg-[#0034B3] text-white rounded-xl text-xs font-bold shadow-xs transition-colors cursor-pointer flex items-center justify-center gap-2 shrink-0"
+                  >
+                    <span>Inquire for Similar Project</span>
+                    <ArrowUpRight className="w-4 h-4 text-orange-300" />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
